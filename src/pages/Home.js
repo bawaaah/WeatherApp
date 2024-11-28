@@ -8,12 +8,14 @@ function Home() {
     const [lat, setLat] = useState(2)
     const [location, setLocation] = useState()
 
+    const apikey = process.env.REACT_APP_API_KEY
+
     const fetchData = async () => {
         try {
-            const resLocation = await axios.get(`http://api.openweathermap.org/geo/1.0/direct?q=${location}&limit=1&appid=cb03840f9e7eac6ac4f62248c6dbdf8d`)
+            const resLocation = await axios.get(`http://api.openweathermap.org/geo/1.0/direct?q=${location}&limit=1&appid=${process.env.REACT_APP_API_KEY}`)
             setLon(resLocation.data[0].lon)
             setLat(resLocation.data[0].lat)
-            const resData = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=cb03840f9e7eac6ac4f62248c6dbdf8d&units=metric`)
+            const resData = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${process.env.REACT_APP_API_KEY}&units=metric`)
             setData(resData.data)
         } catch (error) {
             console.log(error)
@@ -22,6 +24,8 @@ function Home() {
 
     function getLocation() {
         fetchData()
+        console.log(apikey);
+        
     }
 
     return (
