@@ -21,6 +21,12 @@ A simple weather app built with React.js that allows users to search for weather
 
     npm install
 
-3. Start the development server:
+3. Obtain an API key from a weather service
+
+4. Create a .env file in the root directory of your project and add the following line
+
+   REACT_APP_API_KEY = your-api-key-here
+
+6. Start the development server:
 
     npm start
